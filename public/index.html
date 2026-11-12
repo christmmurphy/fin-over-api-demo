@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Fin over API — demo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <div>
+      <h1>
+        <svg class="mark" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" /><path d="M8 12.5l2.5 2.5L16 9" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round" /></svg>
+        Fin over API <span class="workspace" id="workspace-id"></span>
+      </h1>
+      <p class="subtitle">Ask Fin a question through the Fin Agent API and watch the backend traffic live.</p>
+    </div>
+  </header>
+
+  <main>
+    <section class="panel ask-panel">
+      <form id="ask-form">
+        <label>
+          Question
+          <textarea id="question" rows="3" placeholder="How do I reset my password?" required></textarea>
+        </label>
+
+        <fieldset class="user-vars">
+          <legend>User variables <span class="hint">(sent with the request — don't change Fin's answer in this demo)</span></legend>
+          <label>User ID <input id="user-id" value="demo-user-1" /></label>
+          <label>Name <input id="user-name" value="Jamie Rivera" /></label>
+          <label>Email <input id="user-email" value="jamie@example.com" /></label>
+        </fieldset>
+
+        <button id="send-btn" type="submit">Ask Fin</button>
+      </form>
+
+      <div id="loader" class="loader" hidden>
+        <span></span><span></span><span></span>
+      </div>
+
+      <div id="answer-box" class="answer-box" hidden>
+        <h2>Answer</h2>
+        <div id="answer-text" class="answer-content"></div>
+      </div>
+    </section>
+
+    <section class="panel log-panel">
+      <div class="log-header">
+        <h2>Backend activity</h2>
+        <button id="clear-log" type="button">Clear</button>
+      </div>
+      <ol id="log-list" class="log-list"></ol>
+    </section>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.1.6/purify.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
